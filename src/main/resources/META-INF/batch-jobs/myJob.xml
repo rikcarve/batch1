@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="myJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd" version="1.0">
+    <step id="myStep" >
+        <chunk item-count="100">
+            <reader ref="csvItemReader">
+                <properties>
+                    <property name="resource" value="#{jobParameters['resource']}"/>
+                    <property name="beanType" value="ch.carve.batch1.CurrencyRate"/>
+                    <property name="nameMapping" value="currencyCode, rate"/>
+                    <property name="headerless" value="true"/>
+                </properties>
+            </reader>
+            <processor ref="currencyItemProcessor"/>
+            <writer ref="currencyItemWriter"/>
+        </chunk>
+    </step>
+</job>
+
