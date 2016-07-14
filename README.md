@@ -31,4 +31,11 @@ Change standalone.xml:
                 <keepalive-time time="30" unit="seconds"/>
             </thread-pool>
         </subsystem>
+        <subsystem xmlns="urn:jboss:domain:naming:2.0">
+            <bindings>
+                <simple name="java:/env/jsf/ProjectStage" value="Development"/>
+            </bindings>
+            <remote-naming/>
+        </subsystem>
+
 ```
